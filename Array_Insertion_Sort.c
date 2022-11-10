@@ -44,6 +44,16 @@ void descend_insertionSort(int array1[], int size1)
     }
 }
 
+// function to print an array when called from main
+void printArray(int array3[], int size3)
+{
+  for (int i = 0; i < size3; ++i) {
+    printf("%d  ", array3[i]);
+  }
+  printf("\n");
+}
+
+
 int main()
 {
 
