@@ -2,13 +2,11 @@
 
 #include <stdio.h>
 
-// function to print an array when called from main
-void printArray(int array2[], int size2)
+void swap(int *x, int *y)
 {
-  for (int i = 0; i < size2; ++i) {
-    printf("%d  ", array2[i]);
-  }
-  printf("\n");
+  int temp = *x;    // stores the value of pointer *x in temp, this allows for pointer *x to be overwritten while its previous value is stored
+  *x = *y;          // stores the value of pointer *y in temp
+  *y = temp;        // stores the previous value of pointer *x (which was stored in temp) in *y
 }
 
 
