@@ -1,101 +1,98 @@
+//quick sort code -need to meet TAs
+
 #include <stdio.h>
 #include <stdlib.h>
  
-struct Node
+struct node         // defining a node for the linked list
 {
     int data;
-    struct Node* next;
+    struct node* next;
 };
  
-void insert(struct Node** head, int value)
+void insert(struct node* head, int value)
 {
-    struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+    struct node* node = (struct node*)malloc(sizeof(struct node));
     if (node != NULL)
     {
         node->data = value;
         node->next = NULL;
-        if (*head == NULL)
+        if (head == NULL)
         {
-            *head = node;
+            head = node;
         }
         else
         {
-            struct Node* temp = *head;
+            struct node* temp = head;
  
-            // finding last node
-            while (temp->next != NULL) {
+            while (temp->next != NULL)          // finding final node in the list
+            {
                 temp = temp->next;
             }
- 
-            // adding node at last position
-            temp->next = node;
+             temp->next = node;                 // pushing node at last position
         }
     }
 }
  
-void display(struct Node* head)
+void display(struct node* head)
 {
-    if (head == NULL) {
-        printf("Empty linked list");
-        return;
+    if (head == NULL)                        // checks if head is empty, in effect, list is empty
+    {
+        printf("Empty linked list");         
+        return;                             // function exit statement if condition in loop is satisfied
     }
-    struct Node* temp = head;
+    struct node* temp = head;
     printf("\n Linked List :");
-    while (temp != NULL) {
-        printf("  %d", temp->data);
+    while (temp != NULL)
+    {
+        printf("  %d", temp->data);         // printing the linked list
         temp = temp->next;
     }
 }
  
-struct Node* last_node(struct Node* head)
+struct node* last_node(struct node* head)
 {
-    struct Node* temp = head;
+    struct node* temp = head;
     while (temp != NULL && temp->next != NULL) {
         temp = temp->next;
     }
     return temp;
 }
  
-// We are Setting the given last node position to its proper
-// position
-struct Node* parition(struct Node* first, struct Node* last)
+struct node* parition(struct node* first, struct node* last)            // function to partition the list
 {
-    // Get first node of given linked list
-    struct Node* pivot = first;
-    struct Node* front = first;
+    struct node* pivot = first;                                         // assigning the value of node pivot to the value stored in first
+    struct node* front = first;                                         // assigning the value of node pivot to the value stored in first
+    
     int temp = 0;
-    while (front != NULL && front != last) {
-        if (front->data < last->data) {
+
+    while (front != NULL && front != last)
+    {
+        if (front->data < last->data)
+        {
             pivot = first;
  
-            // Swapping  node values
-            temp = first->data;
+            temp = first->data;                                         // swapping value procedure; similar to previous programs
             first->data = front->data;
             front->data = temp;
  
-            // Visiting the next node
             first = first->next;
         }
- 
-        // Visiting the next node
-        front = front->next;
+         front = front->next;
     }
  
-    // Change last node value to current node
     temp = first->data;
     first->data = last->data;
     last->data = temp;
     return pivot;
 }
  
-// Performing quick sort in  the given linked list
-void quick_sort(struct Node* first, struct Node* last)
+void quick_sort(struct node* first, struct node* last)          // function applying the quick sort technique
 {
     if (first == last)
     {
         return;
     }
-    struct Node* pivot = parition(first, last);
+    struct node* pivot = parition(first, last);
  
     if (pivot != NULL && pivot->next != NULL) {
         quick_sort(pivot->next, last);
@@ -106,13 +103,10 @@ void quick_sort(struct Node* first, struct Node* last)
     }
 }
  
-// Driver's code
 int main()
 {
-    struct Node* head = NULL;
- 
-    // Create linked list
-    int length, a = 0;
+    struct node* head = NULL;
+     int length, a = 0;
 
     printf("Please enter the number of elements in your linked list:\n");
 
@@ -123,7 +117,7 @@ int main()
     for(int i = 0; i < length; ++i)
     {
         scanf("%d", &a);
-        insert(&head, a);
+        insert(head, a);
     }
   
     quick_sort(head, last_node(head));
