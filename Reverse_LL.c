@@ -1,4 +1,4 @@
-// Creating a linked list given a set of values(int)
+// Reversing a linked list
 
 #include <stdio.h>
 #include <stdlib.h>

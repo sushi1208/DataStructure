@@ -32,6 +32,7 @@
   ],
   "files.associations": {
     "stdio.h": "c",
-    "quick_sort_ll": "c"
+    "quick_sort_ll": "c",
+    "stdlib.h": "c"
   }
 }
