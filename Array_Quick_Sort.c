@@ -14,9 +14,9 @@ void swap(int *x, int *y)
 int partition(int array1[], int low, int high)
 {
     int right = array1[high];   //storing the value of the rightmost element in int variable 'right
-    int i = (low - 1);      // traverse each element of the array
+    int i = (low - 1);      
         
-    for (int j = low; j < high; j++)
+    for (int j = low; j < high; j++)    // traverse each element of the array
     {
         if (array1[j] <= right)
         {
@@ -35,11 +35,11 @@ void quickSort(int array[], int low, int high)
 {
     if (low < high)
     {
-        int pi = partition(array, low, high);
+        int a = partition(array, low, high);
         
-        quickSort(array, low, pi - 1);
+        quickSort(array, low, a - 1);
         
-        quickSort(array, pi + 1, high);
+        quickSort(array, a + 1, high);
   }
 }
 
