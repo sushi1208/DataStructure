@@ -1,4 +1,3 @@
-// Solution to Question 3-a of the Midterm Exam (Take-Home)
 // Read https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/ once; however wrote code on my own
 
 #include <stdio.h>
